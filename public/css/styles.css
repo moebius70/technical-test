@@ -1,0 +1,20 @@
+.site-header {
+    background-image: url("../images/header.jpg");
+    background-position: center;
+}
+
+.branding {
+    color: white;
+    font-size: 6rem;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.branding > a {
+    text-decoration: none;
+    color: white;
+}
+
+.page-title {
+    line-height: 6rem;
+}
