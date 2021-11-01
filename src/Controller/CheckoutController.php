@@ -10,22 +10,14 @@ class CheckoutController extends BaseController
 {
     public function checkout(): Response
     {
-        // $productId = $this->request->get('productId');
-        $product = $this->entityManager->getRepository(Product::class)->findBy(array('id' => [2, 3]));
+        $total = $this->request->getSession()->get('total');
+        $items = unserialize($this->request->getSession()->get('items'));
 
-        for($i=0; $i<count($product); $i++){
-            $total+= $product[$i]->getPrice();
-        }
-
-        $items = serialize($product);
-        $this->request->getSession()->set('items', $items);
-
-
-        if (!$product) {
+        if (!$items) {
             throw new ResourceNotFoundException("Product with id $productId does not exist.");
         }
 
-        return $this->render('checkout.html.twig', ['products' => $product, 'Total' => ($total/100)]);
+        return $this->render('checkout.html.twig', ['products' => $items, 'Total' => ($total/100)]);
     }
 
     public function thanks(): Response

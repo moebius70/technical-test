@@ -17,11 +17,12 @@ class ProductController extends BaseController
 
     public function addtobasket(): Response
     {
-        $productId = $this->request->get('productId');
-        
-        //  $this->request->getSession()->set('basket', );
 
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
-        return $this->render('list.html.twig', ['products' => $products]);
+        // $productId = $this->request->get('productId');
+        
+        // //  $this->request->getSession()->set('basket', );
+
+        // $products = $this->entityManager->getRepository(Product::class)->findAll();
+        // return $this->render('list.html.twig', ['products' => $products]);
     }
 }
