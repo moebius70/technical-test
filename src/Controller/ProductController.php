@@ -22,7 +22,6 @@ class ProductController extends BaseController
         
         // //  $this->request->getSession()->set('basket', );
 
-        // $products = $this->entityManager->getRepository(Product::class)->findAll();
         // return $this->render('list.html.twig', ['products' => $products]);
     }
 }
