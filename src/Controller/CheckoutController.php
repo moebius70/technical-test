@@ -10,7 +10,7 @@ class CheckoutController extends BaseController
 {
     public function checkout(): Response
     {
-        $productId = $this->request->get('productId');
+        // $productId = $this->request->get('productId');
         $product = $this->entityManager->getRepository(Product::class)->findBy(array('id' => [2, 3]));
 
         for($i=0; $i<count($product); $i++){

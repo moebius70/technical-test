@@ -14,7 +14,6 @@
                     <h3 class="card-title">{{ product.name }}</h3>
                     <h4>&pound;{{ (product.price/100)|number_format(2, '.', ',') }}</h4>
                     <p class="card-text">{{ product.description|raw }}</p>
-                    {# <a href="/checkout/{{ product.id }}" class="btn btn-primary">Add to Basket</a> #}
                     <a href="/{{ product.id }}" class="btn btn-primary">Add to Basket</a>
                 </div>
             </div>

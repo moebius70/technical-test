@@ -17,8 +17,6 @@ class ProductController extends BaseController
 
     public function addtobasket(): Response
     {
-        echo $productId;
-
         $productId = $this->request->get('productId');
         
         //  $this->request->getSession()->set('basket', );

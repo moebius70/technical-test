@@ -10,7 +10,7 @@ class BasketController extends BaseController
 {
     public function basket(): Response
     {
-        $productId = $this->request->get('productId');
+        // $productId = $this->request->get('productId');
         // $product = $this->entityManager->getRepository(Product::class)->find($productId);
         $product = $this->entityManager->getRepository(Product::class)->findBy(array('id' => [2, 3]));
 
@@ -18,8 +18,8 @@ class BasketController extends BaseController
             $total+= $product[$i]->getPrice();
         }
 
-        $items = serialize($product);
-        $this->request->getSession()->set('items', $items);
+        // $items = serialize($product);
+        // $this->request->getSession()->set('items', $items);
 
 
         if (!$product) {
@@ -33,7 +33,6 @@ class BasketController extends BaseController
     public function deleteItem(): Response
     {
         $productId = $this->request->get('productId');
-        echo $productId;
         // $product = $this->entityManager->getRepository(Product::class)->find($productId);
         $product = $this->entityManager->getRepository(Product::class)->findBy(array('id' => [2, 3]));
 
