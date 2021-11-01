@@ -1,23 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Checkout{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
     <h2 class="page-title">Checkout</h2>
-    <p class="lead">Please check and confirm your order details below.</p>
 
-    <br><br>
-
-    <h3 class="mb-3">Your Order</h3>
-    <div class="row">
-        <div class="col-2">
-            <img width="100%" src="{{ product.imageUrl }}" alt="{{ product.name }}">
+    {# <div class="row"> #}
+    <table><tr>
+    {% for product in products %}
+        <div class="col-md-6 mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ product.name }}</h3>
+                    <h4>&pound;{{ (product.price/100)|number_format(2, '.', ',') }}</h4>
+                </div>
+            </div>
         </div>
-        <div class="col-10">
-            <h5>{{ product.name }}</h5>
-            <h5>&pound;{{ (product.price/100)|number_format(2, '.', ',') }}</h5>
-            <p>{{ product.description|raw }}</p>
-        </div>
+        {% if loop.index % 2 == 0 %}
+            </tr></table>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="row mt-3">
+        <div class="text-center">
+            <h2>Total price: {{Total}} GBP</h2>
+        </div>    
     </div>
     <div class="row mt-3">
         <div class="text-center">

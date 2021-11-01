@@ -3,7 +3,8 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h2 class="page-title">Products</h2>
+    <h2 class="page-title">Basket</h2>
+    <h2>Total price: {{Total}} GBP</h2>
 
     <div class="row">
     {% for product in products %}
@@ -14,8 +15,8 @@
                     <h3 class="card-title">{{ product.name }}</h3>
                     <h4>&pound;{{ (product.price/100)|number_format(2, '.', ',') }}</h4>
                     <p class="card-text">{{ product.description|raw }}</p>
-                    {# <a href="/checkout/{{ product.id }}" class="btn btn-primary">Add to Basket</a> #}
-                    <a href="/{{ product.id }}" class="btn btn-primary">Add to Basket</a>
+                    <a href="/basket/{{ product.id }}" class="btn btn-primary">Delete</a>
+                    {# <a href="/shoppingcart" class="btn btn-primary">Add to Basket</a> #}
                 </div>
             </div>
         </div>
@@ -26,7 +27,7 @@
     </div>
     <div class="row mt-3">
         <div class="text-center">
-            <a class="btn btn-primary" href="/basket" title="View Basket">View Basket</a>
+            <a class="btn btn-primary" href="/checkout" title="Checkout">Checkout</a>
         </div>
-    </div    
+    </div>
 {% endblock %}

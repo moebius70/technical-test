@@ -6,26 +6,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use WorldOfWonders\Entity\Product;
 
-class CheckoutController extends BaseController
+class ShoppingcartController extends BaseController
 {
-    public function checkout(): Response
+    public function shoppingcart(): Response
     {
         $productId = $this->request->get('productId');
-        $product = $this->entityManager->getRepository(Product::class)->findBy(array('id' => [2, 3]));
-
-        for($i=0; $i<count($product); $i++){
-            $total+= $product[$i]->getPrice();
-        }
-
-        $items = serialize($product);
-        $this->request->getSession()->set('items', $items);
-
+        $product = $this->entityManager->getRepository(Product::class)->find($productId);
 
         if (!$product) {
             throw new ResourceNotFoundException("Product with id $productId does not exist.");
         }
 
-        return $this->render('checkout.html.twig', ['products' => $product, 'Total' => ($total/100)]);
+        return $this->render('checkout.html.twig', ['product' => $product]);
     }
 
     public function thanks(): Response
